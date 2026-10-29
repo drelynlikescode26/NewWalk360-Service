@@ -35,3 +35,9 @@ Resource descriptions are short factual summaries. Georgia listings are labeled;
 GitHub Pages publishes `main` at the root. The domain is registered through Cloudflare. The apex resolved to valid GitHub Pages addresses; `www` had no DNS record. HTTPS initially failed with a certificate-name error and GitHub reported no issued certificate. The domain's Pages binding was refreshed using GitHub's recovery procedure, preserving the exact domain.
 
 Recovery documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https
+
+## Delivery verification
+
+GitHub issued an approved certificate for `newwalk360.org`; HTTPS enforcement is enabled and HTTP redirects to HTTPS. The redesigned site deployed successfully. All seven public content pages, the supplied logo, three generated WebP photos, self-hosted font, CSS, JavaScript, and sitemap returned HTTP 200 over validated HTTPS. Five automated checks passed: page structure and internal links/assets, resource search/filter intersections and resets, housing pathways, giving controls and invalid amounts, and navigation state/Escape behavior.
+
+Browser screenshot and responsive visual review could not be completed while the unrelated Windows Firewall security prompt remained open. Responsive CSS is implemented, but rendered layouts should receive a visual pass once the prompt is dismissed. No certificate warning was bypassed and no Windows security setting was changed.
