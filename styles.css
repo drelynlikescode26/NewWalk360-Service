@@ -40,3 +40,9 @@
 @media(max-width:760px){.footer-logo{width:156px;height:130px;margin-top:-10px}.footer-logo>img{width:156px;height:208px;top:-43px}.footer-bottom>.photo-credits-link{margin-left:0}}
 @media(prefers-reduced-motion:reduce){.intro-screen,.show-intro .intro-screen{display:none!important}}
 @media print{.intro-screen,.show-intro .intro-screen{display:none!important}.footer-logo{mask-image:none}}
+/* Inspired by the Habitat reference's rotating halo and circular exit. */
+.intro-orbit::before,.intro-orbit::after{content:'';position:absolute;inset:7px;border-radius:50%;pointer-events:none}
+.intro-orbit::before{background:conic-gradient(from 0deg,transparent 0deg,#f1ca62 100deg,#bda0da 220deg,transparent 355deg);mask-image:radial-gradient(farthest-side,transparent calc(100% - 8px),#000 calc(100% - 7px));animation:intro-orbit-turn 1.1s linear infinite}
+.intro-orbit::after{inset:4px;border:6px solid #f1ca62;border-left-color:transparent;border-bottom-color:#8b64ad;filter:blur(9px);opacity:.5;animation:intro-orbit-turn 1.1s linear infinite}
+.intro-logo-frame{z-index:1}
+@keyframes intro-orbit-turn{to{transform:rotate(360deg)}}

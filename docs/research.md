@@ -5,7 +5,11 @@
 - https://share.google/YI2aHeHLqsAyeEXtE resolves to https://habitatlmc.org/ — clear task paths for programs, applications, volunteering, and donations; housing photography and mission-led structure.
 - https://share.google/OGSaCnfEBRvR83H5X resolves to https://frontlinehousing.org/ — direct housing assistance action and accessible explanation of next steps. Its program criteria are specific to Frontline and were not imported into New Walk 360's copy.
 - https://share.google/C5IGzOC9e399XD9ks resolves to https://mtlawoffice.com/family-law/paternity/single-moms-in-georgia — useful resource-directory organization. No legal advice or third-party copy was reproduced.
-- https://share.google/lIvpB5mzGNkknkrfT returned HTTP 403 through available web fetches. Browser inspection was initially blocked by an unrelated Windows security prompt. This reference was not assumed to have been reviewed.
+- https://share.google/lIvpB5mzGNkknkrfT was later resolved to https://landingi.com/landing-page/non-profit-examples/ and its article was read through the web tool. Direct requests returned HTTP 403.
+
+### Circle intro reference
+
+All four supplied destinations were revisited when the user requested the circle intro. Lake-McHenry Habitat's homepage markup includes an `e-loader`; its theme stylesheet defines a rotating gradient ring with a blurred halo around its logo and a circular exit that shrinks the page overlay. This is the closest match to the user's description. The New Walk intro adapts that behavior with purple and gold, a short fixed duration, once-per-session display, immediate dismissal on input, and reduced-motion support. The Frontline source had no comparable dedicated intro; the Georgia guide's circle animations concern mobile navigation. The first link is a nonprofit landing-page examples article.
 
 The redesign is an original implementation inspired by the references' organization and clear routes to assistance; it does not copy their branding, photographs, text, or code.
 
