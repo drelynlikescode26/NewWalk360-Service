@@ -149,7 +149,7 @@ test('Every page keeps Get Help and Donate outside the collapsible menu', async 
   }
 });
 
-test('All four programs remain in the draft with unconfirmed availability', async () => {
+test('All four programs retain honest availability labels', async () => {
   const {document}=await page('/programs/');
   for(const id of ['housing','essentials','emergency','support']) {
     const program=document.getElementById(id);
@@ -179,8 +179,8 @@ test('Unconnected intake, donations, and newsletter do not collect information o
   for(const route of routes) {
     const {document}=await page(route);
     assert.equal(document.querySelectorAll('form,input[type="email"],input[type="file"],input[autocomplete="cc-number"]').length,0);
-    assert.ok(document.querySelector('.draft-banner'));
-    assert.match(document.querySelector('meta[name="robots"]').getAttribute('content'),/noindex/);
+    assert.equal(document.querySelector('.draft-banner'),null);
+    if(route!=='/404.html') assert.equal(document.querySelector('meta[name="robots"]'),null);
   }
   const help=await page('/get-help/');
   assert.equal(help.document.querySelectorAll('.connection-status').length,2);
@@ -189,27 +189,10 @@ test('Unconnected intake, donations, and newsletter do not collect information o
   assert.ok(donate.document.getElementById('donate-items'));
 });
 
-test('Resource videos embed all three supplied IDs with accessible players and fallback links', async () => {
-  const {document}=await page('/resources/');
-  const section=document.getElementById('video-resources');
-  assert.ok(section);
-  assert.equal(section.querySelectorAll('iframe').length,3);
-  for(const id of ['tEx9Jg-_-0o','uHUpVQ-ziFM','qUEuti4ne3E']) {
-    const card=section.querySelector('[data-video-id="'+id+'"]');
-    assert.ok(card);
-    const frame=card.querySelector('iframe');
-    const url=new URL(frame.getAttribute('src'));
-    assert.equal(url.hostname,'www.youtube-nocookie.com');
-    assert.equal(url.pathname,'/embed/'+id);
-    assert.equal(url.searchParams.get('autoplay'),'0');
-    assert.equal(url.searchParams.get('playsinline'),'1');
-    assert.equal(frame.getAttribute('loading'),'lazy');
-    assert.equal(frame.getAttribute('referrerpolicy'),'strict-origin-when-cross-origin');
-    assert.ok(frame.getAttribute('title'));
-    assert.ok(frame.hasAttribute('allowfullscreen'));
-    assert.ok(card.querySelector('a[href="https://www.youtube.com/watch?v='+id+'"]'));
+test('Construction videos are absent from the nonprofit site', async () => {
+  for(const route of routes) {
+    const {document}=await page(route);
+    assert.equal(document.querySelectorAll('iframe[src*="youtube"],a[href*="youtube.com/watch"]').length,0);
+    assert.equal(document.getElementById('video-resources'),null);
   }
-  assert.ok(document.querySelector('nav a[href="#video-resources"]'));
-  const privacy=await page('/privacy/');
-  assert.match(privacy.document.querySelector('main').textContent,/Loading or playing a video connects to YouTube/);
 });

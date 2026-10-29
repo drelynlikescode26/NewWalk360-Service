@@ -1,6 +1,6 @@
-# Program expansion review draft
+# Program expansion notes
 
-Prepared October 29, 2026. The owner explicitly requested publication of this review version to newwalk360.org so it can be viewed without a temporary preview link. Program availability and business connections remain unconfirmed. Publication does not mark programs as operating or activate payments or applications.
+Prepared October 29, 2026. The owner approved the site's presentation, reported that it looks good on mobile, and requested removal of the review banner and animated scrolling. Program availability and business connections remain unconfirmed. Presentation approval does not mark programs as operating or activate payments or applications.
 
 ## Included
 
@@ -15,7 +15,7 @@ Prepared October 29, 2026. The owner explicitly requested publication of this re
 - Eligibility and available-funding language for financial and emergency assistance.
 - One-time/monthly donation planning, in-kind items, sponsorship, volunteering, and a newsletter connection placeholder.
 - Existing licensed photographs, supplied logo, and purple-and-gold intro animation preserved.
-- Three owner-selected YouTube videos on building comparisons, a barndominium tour, and floor plans, under Housing Ideas & Walkthroughs on the Resource Center. A jump link leads directly to the videos; each player has a direct YouTube link. Public oEmbed metadata returned successfully for all three IDs. Players use the privacy-enhanced host, no autoplay, inline playback, lazy loading, fullscreen, and a referrer policy compatible with YouTube embedding. Actual playback still needs a browser check.
+- Construction videos were removed after the owner clarified they belong to his father's 1 Good Deal site, not this nonprofit site.
 
 ## Owner confirmations
 
@@ -34,7 +34,7 @@ The user does not believe a donation processor or secure intake system is establ
 5. Choose a secure intake/referral system, define authorized staff access, review its privacy terms, and test routing before opening applications. Ordinary email is for general contact, not sensitive case files.
 6. Connect the approved volunteer and newsletter systems if wanted. These are currently unavailable, not functioning signup forms.
 7. Review desktop and real mobile layouts. Browser access was disabled during implementation, so source and DOM checks do not establish rendered visual quality.
-8. Set `draft` to false only after the program information is confirmed. The build rejects a final release with unconfirmed program states. The published review keeps its banner and noindex state until then.
+8. The owner requested removal of the site-wide draft presentation. `draft` is now false; program-specific availability notices remain visible, and the build validates their labels. Update those labels only after organizational confirmation.
 
 ## Resource sources
 

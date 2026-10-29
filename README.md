@@ -1,6 +1,6 @@
 # New Walk 360 website
 
-The expanded-program review version is being published to the main website at the owner's explicit request. All four programs remain visible with availability awaiting organization confirmation. The review banner and noindex setting remain in place, and unconnected intake and payment features stay inactive. See [the review notes](docs/program-expansion-draft.md) for the remaining business details and connection work.
+The owner approved the presentation for the main website and requested removal of the review banner. All four programs remain visible with availability awaiting organization confirmation, and unconnected intake and payment features stay inactive. Navigation and section links use immediate scrolling. See [the program notes](docs/program-expansion-draft.md) for the remaining business details and connection work.
 
 Public website for New Walk 360 Inc. Static HTML, CSS, and browser JavaScript, published by GitHub Pages from the root of `main` at `newwalk360.org`.
 
@@ -11,9 +11,9 @@ Public website for New Walk 360 Inc. Static HTML, CSS, and browser JavaScript, p
 3. Run `node build.mjs`. Commit the generated HTML together with source changes; GitHub Pages serves these files directly.
 4. For checks, run `npm ci --ignore-scripts` and `npm test`. The build itself has no npm dependencies.
 
-The program expansion is maintained in `content/program-update.mjs`; the thirteen resource listings and categories are in `content/resource-directory.mjs`. The three owner-selected YouTube videos are in `content/resource-videos.mjs`. Players use privacy-enhanced embeds, lazy loading, inline playback, accessible titles, and direct YouTube fallback links. `site.config.json` holds program status, draft mode, and approved connection URLs. A production build rejects unconfirmed program states.
+The program expansion is maintained in `content/program-update.mjs`; the thirteen resource listings and categories are in `content/resource-directory.mjs`. `site.config.json` holds program status, draft mode, and approved connection URLs. Each program must have a valid explicit availability label. The building videos belong to the owner's father's 1 Good Deal website and were removed from this nonprofit site at the owner's request.
 
-Pages: home, About Us, Programs & Services, Get Help, Resource Center, Get Involved, Donate, Contact, the preserved housing assistance page, privacy/accessibility, and a custom 404. Eleven automated tests cover structure/routes, resource search and filters, housing selections, giving controls, navigation, intro behavior, program availability, visible help/donate actions, honest unconnected features, and video embed IDs/options/fallbacks. A rendered desktop/mobile review and real embedded video playback check remain pending because browser use is disabled.
+Pages: home, About Us, Programs & Services, Get Help, Resource Center, Get Involved, Donate, Contact, the preserved housing assistance page, privacy/accessibility, and a custom 404. Eleven automated tests cover structure/routes, resource search and filters, housing selections, giving controls, navigation, intro behavior, program availability, visible help/donate actions, honest unconnected features, and removal of the construction videos. The owner reported the site looks good on mobile. An agent-rendered visual check remains unavailable because browser use is disabled.
 
 The homepage has a short purple-and-gold circle reveal on the first visit in a browser session. It skips reduced-motion users, never captures pointer input, and dismisses immediately on a click or keypress. CSS hides it after the animation even if JavaScript fails. The footer uses a larger presentation of the supplied logo with softly blended edges; the original image file is unchanged.
 
