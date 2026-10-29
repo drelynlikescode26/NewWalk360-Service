@@ -64,7 +64,7 @@ document.querySelectorAll('[data-need]').forEach(button => button.addEventListen
   need.links.forEach(([url,label],index) => {
     const anchor = document.createElement('a'); anchor.href=url; anchor.className=`button ${index ? 'button-outline' : 'button-purple'}`; anchor.textContent=label;
     if (url.startsWith('https:')) { anchor.target='_blank'; anchor.rel='noopener noreferrer'; const sr=document.createElement('span'); sr.className='sr-only'; sr.textContent=' (opens in a new tab)'; anchor.append(sr); }
-    const arrow=document.createElement('span'); arrow.setAttribute('aria-hidden','true'); arrow.textContent='↗'; anchor.append(arrow); links.append(anchor);
+    links.append(anchor);
   });
 }));
 

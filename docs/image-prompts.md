@@ -1,5 +1,7 @@
 # Website image prompts
 
+Archived: these generated photos were removed from the live site at the user's request. Current assets and licenses are recorded in [photo credits](photo-credits.md).
+
 Generated with the built-in ChatGPT Image Generation tool, October 29, 2026. Original generated PNGs are retained under `C:/Users/dreda/.codex/generated_images/01a1883a-dac8-7731-af32-b23e2b2d6862/`. Project images are optimized WebP copies; the original scene content is unchanged.
 
 ## Home hero — `images/home-hero.webp`

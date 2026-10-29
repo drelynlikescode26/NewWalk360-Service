@@ -21,6 +21,6 @@ Pages: home, our mission, housing assistance, community resources, donations, co
 
 ## Assets and provenance
 
-The supplied logo is used intact in `images/logo.jpg`. The three website photos were generated with the built-in ChatGPT Image Generation tool, reviewed, and optimized into WebP files. The site discloses that these are illustrative images, not photographs of actual clients or staff.
+The supplied logo is used intact in `images/logo.jpg`. The current website uses four licensed camera photographs from Pexels, inspected before selection and optimized into WebP files. The original generated photographs were replaced at the user’s request. Photo credits are provided on the privacy page.
 
-See [image prompts](docs/image-prompts.md) for the exact generation briefs and [research notes](docs/research.md) for design references and resource sources. Manrope is self-hosted under the SIL Open Font License in `fonts/OFL.txt`.
+See [photo credits](docs/photo-credits.md) for the current assets and licenses, [archived image prompts](docs/image-prompts.md) for the original unused generation briefs, and [research notes](docs/research.md) for design references and resource sources. Manrope is self-hosted under the SIL Open Font License in `fonts/OFL.txt`.

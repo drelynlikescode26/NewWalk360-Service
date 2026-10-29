@@ -11,6 +11,8 @@ The redesign is an original implementation inspired by the references' organizat
 
 ## Realistic image prompting
 
+Update: the first set of generated photographs was replaced at the user's request with four real Pexels photographs. The current sources and license are in `docs/photo-credits.md`. The prompting notes below document the previous design, not current website photography. Decorative upward-right arrows were also removed from page templates and interactive housing links.
+
 Official guidance: https://developers.openai.com/api/docs/guides/image-prompting
 
 Prompt the visible scene, camera framing, natural light, real skin and material texture, and explicit exclusions. Use believable unposed action, fabric creases, flyaway hairs, modest wear, and restrained photographic grain. Avoid generic "8K" language, gloss, airbrushing, staged smiles, and exaggerated cinematic grading. Camera terms are appearance cues, not guaranteed physical camera settings.
