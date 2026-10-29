@@ -1,4 +1,5 @@
 import {categories, directory} from './resource-directory.mjs';
+import {renderResourceVideos} from './resource-videos.mjs';
 
 export function applyProgramUpdate({pages, config, esc, icon, image, link, external, breadcrumb, pageHeading, cta, crisis}) {
   const mission = 'To empower individuals and families toward stability and independence by providing access to safe housing, essential resources, emergency assistance, and supportive services that strengthen lives and communities.';
@@ -72,4 +73,10 @@ export function applyProgramUpdate({pages, config, esc, icon, image, link, exter
   const contact=pages.find(p=>p.path==='/contact/');
   contact.title='Contact, hours & service area';
   contact.body=contact.body.replace('<section class="section soft-section" id="get-involved">',`<section class="section soft-section" id="hours"><div class="container narrow"><h2>Hours &amp; Service Area</h2><p>${config.hours?esc(config.hours):'Public office hours are awaiting confirmation.'}</p><p>${config.serviceArea?'Service area: '+esc(config.serviceArea):'The organization’s service counties are awaiting confirmation. A Georgia resource listing does not establish New Walk 360’s coverage.'}</p></div></section><section class="section soft-section" id="get-involved">`);
+
+  const resourcePage=pages.find(p=>p.path==='/resources/');
+  resourcePage.body=resourcePage.body.replace('<section class="resources-section">',`<nav class="container program-jumps" aria-label="Resource Center sections">${link('#resource-directory','Community Directory')}${link('#video-resources','Video Resources')}</nav><section class="resources-section" id="resource-directory">`);
+  resourcePage.body=resourcePage.body.replace(cta(),renderResourceVideos(esc)+cta());
+  const privacy=pages.find(p=>p.path==='/privacy/');
+  privacy.body=privacy.body.replace('<h2>External resources and giving</h2>','<h2>Embedded videos</h2><p>The Resource Center uses YouTube’s privacy-enhanced embedded player. Loading or playing a video connects to YouTube, whose privacy and cookie practices apply. Each video also has a link to watch on YouTube. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s privacy policy<span class="sr-only"> (opens in a new tab)</span></a> for details.</p><h2>External resources and giving</h2>');
 }

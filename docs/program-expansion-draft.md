@@ -15,6 +15,7 @@ Prepared October 29, 2026. This branch is a review draft and has not been deploy
 - Eligibility and available-funding language for financial and emergency assistance.
 - One-time/monthly donation planning, in-kind items, sponsorship, volunteering, and a newsletter connection placeholder.
 - Existing licensed photographs, supplied logo, and purple-and-gold intro animation preserved.
+- Three owner-selected YouTube videos on building comparisons, a barndominium tour, and floor plans, under Housing Ideas & Walkthroughs on the Resource Center. A jump link leads directly to the videos; each player has a direct YouTube link. Public oEmbed metadata returned successfully for all three IDs. Players use the privacy-enhanced host, no autoplay, inline playback, lazy loading, fullscreen, and a referrer policy compatible with YouTube embedding. Actual playback still needs a browser check.
 
 ## Owner confirmations
 
