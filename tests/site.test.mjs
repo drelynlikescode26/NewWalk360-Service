@@ -7,7 +7,7 @@ import vm from 'node:vm';
 import { parseHTML } from 'linkedom';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const routes = ['/', '/about/', '/housing-assistance/', '/resources/', '/donate/', '/contact/', '/privacy/', '/404.html'];
+const routes = ['/', '/about/', '/programs/', '/get-help/', '/get-involved/', '/housing-assistance/', '/resources/', '/donate/', '/contact/', '/privacy/', '/404.html'];
 const filename = path => resolve(root, path === '/' ? 'index.html' : path.replace(/^\//, '') + (path.endsWith('/') ? 'index.html' : ''));
 const source = await readFile(resolve(root, 'script.js'), 'utf8');
 async function page(route) {
@@ -55,9 +55,9 @@ test('Resource search, category intersections, reset, and deep links', async () 
   const {document, window} = await page('/resources/');
   const cards = () => [...document.querySelectorAll('.resource-card')].filter(card => !card.hidden);
   const search = document.getElementById('resource-search');
-  assert.equal(cards().length, 8);
+  assert.equal(cards().length, 13);
   document.querySelector('[data-filter="housing"]').click();
-  assert.equal(cards().length, 2);
+  assert.equal(cards().length, 1);
   search.value = 'SNAP'; search.dispatchEvent(new window.Event('input'));
   assert.equal(cards().length, 0);
   assert.equal(document.getElementById('resource-empty').hidden, false);
@@ -67,7 +67,7 @@ test('Resource search, category intersections, reset, and deep links', async () 
   assert.equal(cards().length, 1);
   assert.ok(cards()[0].textContent.includes('Georgia SNAP'));
   document.getElementById('reset-resources').click();
-  assert.equal(cards().length, 8);
+  assert.equal(cards().length, 13);
   const deepLink = await page('/resources/?category=legal');
   assert.equal([...deepLink.document.querySelectorAll('.resource-card')].filter(card => !card.hidden).length, 1);
   assert.equal(deepLink.document.querySelector('[data-filter="legal"]').getAttribute('aria-pressed'), 'true');
@@ -136,4 +136,55 @@ test('The circle intro runs only on a first homepage visit and honors reduced mo
   assert.equal(runStartup(false, {getItem(){throw new Error('Storage unavailable')}}), true);
   const inner = await page('/resources/');
   assert.equal(inner.document.querySelector('.intro-screen'), null);
+});
+
+test('Every page keeps Get Help and Donate outside the collapsible menu', async () => {
+  for (const route of routes) {
+    const {document}=await page(route);
+    for (const href of ['/get-help/','/donate/']) {
+      const action=document.querySelector('.nav-actions a[href="'+href+'"]');
+      assert.ok(action, route+': visible primary action '+href);
+      assert.equal(action.closest('.primary-nav'),null);
+    }
+  }
+});
+
+test('All four programs remain in the draft with unconfirmed availability', async () => {
+  const {document}=await page('/programs/');
+  for(const id of ['housing','essentials','emergency','support']) {
+    const program=document.getElementById(id);
+    assert.ok(program);
+    assert.equal(program.querySelector('[data-program-status]').dataset.programStatus,'unconfirmed');
+    assert.match(program.textContent,/not an open application/);
+  }
+  assert.match(document.getElementById('emergency').textContent,/Subject to eligibility and available funding/);
+  assert.match(document.getElementById('support').textContent,/resources and referrals/);
+  const home=await page('/');
+  assert.equal(home.document.querySelectorAll('.four-programs .program-card').length,4);
+});
+
+test('The directory covers every requested category with an independent next step', async () => {
+  const {document}=await page('/resources/');
+  for(const category of ['housing','wellbeing','disability','food','expenses','healthcare','employment','shelter']) {
+    assert.ok(document.querySelector('[data-filter="'+category+'"]'));
+    assert.ok(document.querySelector('.resource-card[data-category="'+category+'"]'));
+  }
+  for(const card of document.querySelectorAll('.resource-card')) {
+    assert.ok(card.querySelector('.resource-eligibility'));
+    assert.ok(card.querySelector('.resource-links a[href^="https://"]'));
+  }
+});
+
+test('Unconnected intake, donations, and newsletter do not collect information or claim success', async () => {
+  for(const route of routes) {
+    const {document}=await page(route);
+    assert.equal(document.querySelectorAll('form,input[type="email"],input[type="file"],input[autocomplete="cc-number"]').length,0);
+    assert.ok(document.querySelector('.draft-banner'));
+    assert.match(document.querySelector('meta[name="robots"]').getAttribute('content'),/noindex/);
+  }
+  const help=await page('/get-help/');
+  assert.equal(help.document.querySelectorAll('.connection-status').length,2);
+  const donate=await page('/donate/');
+  assert.match(donate.document.querySelector('.giving-status').textContent,/No payment is collected/);
+  assert.ok(donate.document.getElementById('donate-items'));
 });

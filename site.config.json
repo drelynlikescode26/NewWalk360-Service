@@ -1,10 +1,20 @@
 {
-  "name": "New Walk 360 Inc",
+  "name": "New Walk 360 Resources Inc",
+  "draft": true,
   "url": "https://newwalk360.org",
   "email": "",
   "phone": "",
   "serviceArea": "",
   "donationUrl": "",
   "intakeUrl": "",
+  "referralUrl": "",
+  "volunteerUrl": "",
+  "hours": "",
+  "programStatus": {
+    "housing": "unconfirmed",
+    "essentials": "unconfirmed",
+    "emergency": "unconfirmed",
+    "support": "unconfirmed"
+  },
   "resourcesReviewed": "October 29, 2026"
 }

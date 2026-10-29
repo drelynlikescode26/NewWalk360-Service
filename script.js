@@ -39,7 +39,7 @@ document.addEventListener('click', event => {
   if (!event.target.closest('.site-header')) closeMenu();
 });
 primaryNav?.querySelectorAll('a').forEach(anchor => anchor.addEventListener('click', closeMenu));
-window.matchMedia('(min-width: 761px)').addEventListener('change', closeMenu);
+window.matchMedia('(min-width: 1201px)').addEventListener('change', closeMenu);
 
 const searchInput = document.getElementById('resource-search');
 const resourceCards = [...document.querySelectorAll('.resource-card')];
