@@ -1,6 +1,6 @@
 # New Walk 360 website
 
-This branch contains the expanded-program review draft. It is not deployed to the main website. All four programs are retained with availability awaiting organization confirmation. See [the review notes](docs/program-expansion-draft.md) for the remaining business details and connection work.
+The expanded-program review version is being published to the main website at the owner's explicit request. All four programs remain visible with availability awaiting organization confirmation. The review banner and noindex setting remain in place, and unconnected intake and payment features stay inactive. See [the review notes](docs/program-expansion-draft.md) for the remaining business details and connection work.
 
 Public website for New Walk 360 Inc. Static HTML, CSS, and browser JavaScript, published by GitHub Pages from the root of `main` at `newwalk360.org`.
 

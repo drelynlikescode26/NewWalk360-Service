@@ -1,6 +1,6 @@
 # Program expansion review draft
 
-Prepared October 29, 2026. This branch is a review draft and has not been deployed to newwalk360.org.
+Prepared October 29, 2026. The owner explicitly requested publication of this review version to newwalk360.org so it can be viewed without a temporary preview link. Program availability and business connections remain unconfirmed. Publication does not mark programs as operating or activate payments or applications.
 
 ## Included
 
@@ -25,7 +25,7 @@ The user will obtain the organization's public email, phone, service counties, a
 
 The user does not believe a donation processor or secure intake system is established and expects to arrange those. No card collection, pledge submission, assistance application, referral submission, volunteer registration, or newsletter subscription is simulated.
 
-## Before release
+## Before final operational launch
 
 1. Update `site.config.json` with confirmed program states: `available`, `planned`, `referrals`, or `unavailable`. Do not choose `available` without organizational confirmation.
 2. Confirm the legal/public name, public contact, hours, and service coverage.
@@ -34,7 +34,7 @@ The user does not believe a donation processor or secure intake system is establ
 5. Choose a secure intake/referral system, define authorized staff access, review its privacy terms, and test routing before opening applications. Ordinary email is for general contact, not sensitive case files.
 6. Connect the approved volunteer and newsletter systems if wanted. These are currently unavailable, not functioning signup forms.
 7. Review desktop and real mobile layouts. Browser access was disabled during implementation, so source and DOM checks do not establish rendered visual quality.
-8. Set `draft` to false only after the program information is confirmed. The build rejects a production release with unconfirmed program states. Preview copies remain noindex.
+8. Set `draft` to false only after the program information is confirmed. The build rejects a final release with unconfirmed program states. The published review keeps its banner and noindex state until then.
 
 ## Resource sources
 
