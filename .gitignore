@@ -1,0 +1,4 @@
+reference-redirect.tmp
+.preview/
+node_modules/
+*.log

@@ -1,94 +1,94 @@
-// Nav scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
-});
-
-// Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
-
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// Donate amount selector
-const donateImpacts = {
-  25: '$25 helps feed a family for a week.',
-  50: '$50 provides hygiene kits for 3 families.',
-  100: '$100 provides school supplies for 5 students.',
-  250: '$250 sponsors a youth in our mentorship program for a month.'
-};
-document.querySelectorAll('.donate-amt').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.donate-amt').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const amount = btn.dataset.amount;
-    document.getElementById('donateImpact').textContent = donateImpacts[amount] || '';
-  });
-});
-
-// Animate stat counters when in view
-const statNums = document.querySelectorAll('.stat-num');
-const animateCounters = () => {
-  statNums.forEach(num => {
-    const target = parseInt(num.dataset.target, 10);
-    const current = parseInt(num.textContent, 10);
-    if (current < target) {
-      const increment = Math.ceil(target / 50);
-      const next = Math.min(current + increment, target);
-      num.textContent = next;
-    }
-  });
-};
-
-const statsSection = document.querySelector('.section-gold-band');
-let statsAnimated = false;
-const observer = new IntersectionObserver(entries => {
-  if (entries[0].isIntersecting && !statsAnimated) {
-    statsAnimated = true;
-    const interval = setInterval(() => {
-      animateCounters();
-      const allDone = Array.from(statNums).every(
-        n => parseInt(n.textContent) >= parseInt(n.dataset.target)
-      );
-      if (allDone) clearInterval(interval);
-    }, 30);
-  }
-}, { threshold: 0.3 });
-if (statsSection) observer.observe(statsSection);
-
-// Contact form
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  setTimeout(() => {
-    document.getElementById('formSuccess').style.display = 'block';
-    e.target.reset();
-    btn.disabled = false;
-    btn.textContent = 'Send Message';
-    setTimeout(() => {
-      document.getElementById('formSuccess').style.display = 'none';
-    }, 5000);
-  }, 800);
+'use strict';
+const menuToggle = document.querySelector('.menu-toggle');
+const primaryNav = document.querySelector('.primary-nav');
+function closeMenu() {
+  if (!menuToggle || !primaryNav) return;
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.querySelector('.sr-only').textContent = 'Open navigation';
+  primaryNav.classList.remove('open');
 }
+menuToggle?.addEventListener('click', () => {
+  const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.querySelector('.sr-only').textContent = open ? 'Close navigation' : 'Open navigation';
+  primaryNav.classList.toggle('open', open);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menuToggle?.getAttribute('aria-expanded') === 'true') {
+    closeMenu(); menuToggle.focus();
+  }
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.site-header')) closeMenu();
+});
+primaryNav?.querySelectorAll('a').forEach(anchor => anchor.addEventListener('click', closeMenu));
+window.matchMedia('(min-width: 761px)').addEventListener('change', closeMenu);
 
-// Smooth active nav link highlight on scroll
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
+const searchInput = document.getElementById('resource-search');
+const resourceCards = [...document.querySelectorAll('.resource-card')];
+const resourceFilters = [...document.querySelectorAll('[data-filter]')];
+let activeFilter = 'all';
+function filterResources() {
+  const words = (searchInput?.value || '').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  let visible = 0;
+  resourceCards.forEach(card => {
+    card.hidden = !((activeFilter === 'all' || card.dataset.category === activeFilter) && words.every(word => card.dataset.search.includes(word)));
+    if (!card.hidden) visible++;
   });
-  navAnchors.forEach(a => {
-    a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--gold-light)' : '';
+  const counter = document.getElementById('resource-count');
+  if (counter) counter.textContent = `${visible} helpful starting point${visible === 1 ? '' : 's'}`;
+  const empty = document.getElementById('resource-empty');
+  if (empty) empty.hidden = visible !== 0;
+}
+resourceFilters.forEach(button => button.addEventListener('click', () => {
+  activeFilter = button.dataset.filter;
+  resourceFilters.forEach(filter => { filter.classList.toggle('active', filter === button); filter.setAttribute('aria-pressed', String(filter === button)); });
+  filterResources();
+}));
+searchInput?.addEventListener('input', filterResources);
+document.getElementById('reset-resources')?.addEventListener('click', () => {
+  searchInput.value = ''; resourceFilters.find(button => button.dataset.filter === 'all').click(); searchInput.focus();
+});
+
+const housingNeeds = {
+  shelter: {title:'Start with local shelter and housing resources.',copy:'Call 211 to ask about help in your area, or use HUD’s Find Shelter tool to search by location. Availability and intake requirements vary by provider.',links:[['https://www.hud.gov/findshelter','Find shelter'],['tel:211','Call 211']]},
+  expenses: {title:'Ask about resources to help you stay housed.',copy:'Your local 211 service can help you look for rent, utility, and other assistance. Ask the provider about current funding, its service area, and the steps to apply. If you have an eviction deadline, seek legal help promptly.',links:[['https://211.org/','Find local assistance'],['/resources/?category=legal','Explore legal help']]},
+  planning: {title:'Build a starting point for longer-term stability.',copy:'Explore housing and community services near you, then contact providers to understand their application process. Benefits, food resources, and employment support may also help as you plan your next step.',links:[['/resources/?category=housing','Explore housing resources'],['/resources/','Browse all resources']]}
+};
+document.querySelectorAll('[data-need]').forEach(button => button.addEventListener('click', () => {
+  const need = housingNeeds[button.dataset.need];
+  document.querySelectorAll('[data-need]').forEach(option => { option.classList.toggle('active', option === button); option.setAttribute('aria-pressed', String(option === button)); });
+  document.getElementById('need-title').textContent = need.title;
+  document.getElementById('need-copy').textContent = need.copy;
+  const links = document.getElementById('need-links'); links.replaceChildren();
+  need.links.forEach(([url,label],index) => {
+    const anchor = document.createElement('a'); anchor.href=url; anchor.className=`button ${index ? 'button-outline' : 'button-purple'}`; anchor.textContent=label;
+    if (url.startsWith('https:')) { anchor.target='_blank'; anchor.rel='noopener noreferrer'; const sr=document.createElement('span'); sr.className='sr-only'; sr.textContent=' (opens in a new tab)'; anchor.append(sr); }
+    const arrow=document.createElement('span'); arrow.setAttribute('aria-hidden','true'); arrow.textContent='↗'; anchor.append(arrow); links.append(anchor);
   });
-}, { passive: true });
+}));
+
+// Amounts are a planning aid. No payment or pledge is simulated or submitted.
+let giftAmount=50;
+let giftFrequency='one-time';
+const customAmount=document.getElementById('custom-amount');
+const giftSummary=document.getElementById('gift-summary');
+const amountButtons=[...document.querySelectorAll('[data-amount]')];
+function updateGiftSummary() {
+  if (!giftSummary) return;
+  if (!Number.isFinite(giftAmount) || giftAmount<1 || giftAmount>100000 || !Number.isInteger(giftAmount)) { giftSummary.textContent='Please choose a whole-dollar amount from $1 to $100,000.'; customAmount?.setAttribute('aria-invalid','true'); return; }
+  customAmount?.removeAttribute('aria-invalid');
+  const amount=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(giftAmount);
+  giftSummary.textContent=`Your gift: ${amount} · ${giftFrequency==='monthly' ? 'each month' : 'one time'}`;
+}
+amountButtons.forEach(button => button.addEventListener('click',() => {
+  giftAmount=Number(button.dataset.amount); customAmount.value='';
+  amountButtons.forEach(option => { option.classList.toggle('active',option===button); option.setAttribute('aria-pressed',String(option===button)); }); updateGiftSummary();
+}));
+customAmount?.addEventListener('input',() => { giftAmount=Number(customAmount.value); amountButtons.forEach(button => {button.classList.remove('active');button.setAttribute('aria-pressed','false');});updateGiftSummary(); });
+document.querySelectorAll('[data-frequency]').forEach(button => button.addEventListener('click',() => {
+  giftFrequency=button.dataset.frequency;
+  document.querySelectorAll('[data-frequency]').forEach(option => {option.classList.toggle('active',option===button);option.setAttribute('aria-pressed',String(option===button));});updateGiftSummary();
+}));
+const requestedCategory=new URLSearchParams(location.search).get('category');
+if(requestedCategory && resourceFilters.length) resourceFilters.find(button => button.dataset.filter===requestedCategory)?.click();

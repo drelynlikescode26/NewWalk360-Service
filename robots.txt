@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://newwalk360.org/sitemap.xml

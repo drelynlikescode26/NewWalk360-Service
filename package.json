@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "linkedom": "^0.18.14"
+  },
+  "name": "newwalk360-site",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/site.test.mjs",
+    "build": "node build.mjs"
+  }
+}

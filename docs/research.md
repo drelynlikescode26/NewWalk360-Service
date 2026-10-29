@@ -1,0 +1,37 @@
+# Design and content research — October 29, 2026
+
+## Supplied design references
+
+- https://share.google/YI2aHeHLqsAyeEXtE resolves to https://habitatlmc.org/ — clear task paths for programs, applications, volunteering, and donations; housing photography and mission-led structure.
+- https://share.google/OGSaCnfEBRvR83H5X resolves to https://frontlinehousing.org/ — direct housing assistance action and accessible explanation of next steps. Its program criteria are specific to Frontline and were not imported into New Walk 360's copy.
+- https://share.google/C5IGzOC9e399XD9ks resolves to https://mtlawoffice.com/family-law/paternity/single-moms-in-georgia — useful resource-directory organization. No legal advice or third-party copy was reproduced.
+- https://share.google/lIvpB5mzGNkknkrfT returned HTTP 403 through available web fetches. Browser inspection was initially blocked by an unrelated Windows security prompt. This reference was not assumed to have been reviewed.
+
+The redesign is an original implementation inspired by the references' organization and clear routes to assistance; it does not copy their branding, photographs, text, or code.
+
+## Realistic image prompting
+
+Official guidance: https://developers.openai.com/api/docs/guides/image-prompting
+
+Prompt the visible scene, camera framing, natural light, real skin and material texture, and explicit exclusions. Use believable unposed action, fabric creases, flyaway hairs, modest wear, and restrained photographic grain. Avoid generic "8K" language, gloss, airbrushing, staged smiles, and exaggerated cinematic grading. Camera terms are appearance cues, not guaranteed physical camera settings.
+
+Photos were generated separately, inspected individually, and compressed to WebP without changing scene content. A footer and privacy-page disclosure identify the imagery as AI-created illustration. No invented testimonials or beneficiary stories accompany the photos.
+
+## Resource verification
+
+- United Way 211: https://211.org/ — local community referrals including housing, utilities, food, and health resources.
+- HUD Find Shelter: https://www.hud.gov/findshelter — location-based shelter, food, clinic, and clothing searches.
+- Feeding America: https://www.feedingamerica.org/find-your-local-foodbank — food bank locator.
+- Georgia SNAP: https://dfcs.georgia.gov/services/snap — official food assistance information and application steps.
+- Georgia Gateway: https://dfcs.georgia.gov/services/about-georgia-gateway — official explanation of the benefits portal; direct portal https://gateway.ga.gov/ may block automated fetches.
+- Georgia Legal Services: https://www.glsp.org/ — provider-specific coverage and eligibility must be checked directly.
+- 988 Lifeline: https://988lifeline.org/ — call, text, and chat emotional support.
+- CareerOneStop: https://www.careeronestop.org/ — U.S. Department of Labor-sponsored career resources. The homepage blocked automated retrieval; the provider remains an established public resource, and no availability or eligibility claims are made.
+
+Resource descriptions are short factual summaries. Georgia listings are labeled; the organization’s own service area is not inferred from them. No affiliation is implied.
+
+## Existing hosting findings
+
+GitHub Pages publishes `main` at the root. The domain is registered through Cloudflare. The apex resolved to valid GitHub Pages addresses; `www` had no DNS record. HTTPS initially failed with a certificate-name error and GitHub reported no issued certificate. The domain's Pages binding was refreshed using GitHub's recovery procedure, preserving the exact domain.
+
+Recovery documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https
