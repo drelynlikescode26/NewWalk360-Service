@@ -28,7 +28,8 @@ test('All pages have a usable structure, local assets, and resolvable internal l
     const ids = [...document.querySelectorAll('[id]')].map(el => el.id);
     assert.equal(new Set(ids).size, ids.length, `${route}: unique IDs`);
     for (const img of document.querySelectorAll('img')) {
-      assert.ok(img.getAttribute('alt'), `${route}: image text`);
+      assert.ok(img.hasAttribute('alt'), `${route}: image alt attribute`);
+      assert.ok(img.getAttribute('alt') || img.closest('[aria-hidden="true"]'), `${route}: informative image text or decorative image`);
       assert.ok((await stat(resolve(root, img.getAttribute('src').slice(1)))).size > 0);
     }
     for (const el of document.querySelectorAll('[href],script[src]')) {
@@ -114,4 +115,25 @@ test('Mobile navigation opens, closes on Escape, and exposes the current state',
   const escape = new window.Event('keydown'); escape.key = 'Escape'; document.dispatchEvent(escape);
   assert.equal(toggle.getAttribute('aria-expanded'), 'false');
   assert.equal(document.querySelector('.primary-nav').classList.contains('open'), false);
+});
+
+test('The circle intro runs only on a first homepage visit and honors reduced motion', async () => {
+  const html = await readFile(filename('/'), 'utf8');
+  const {document} = parseHTML(html);
+  const startup = [...document.querySelectorAll('head script:not([src])')].find(script => script.textContent.includes('nw360-intro-seen')).textContent;
+  const memory = new Map();
+  const storage = {getItem: key => memory.get(key), setItem: (key,value) => memory.set(key,value)};
+  const runStartup = (reduced=false, sessionStorage=storage) => {
+    const {document} = parseHTML(html);
+    vm.runInNewContext(startup, {document, window:{matchMedia:()=>({matches:reduced})}, sessionStorage});
+    return document.documentElement.classList.contains('show-intro');
+  };
+  assert.equal(runStartup(), true);
+  assert.equal(runStartup(), false);
+  memory.clear();
+  assert.equal(runStartup(true), false);
+  assert.equal(memory.size, 0);
+  assert.equal(runStartup(false, {getItem(){throw new Error('Storage unavailable')}}), true);
+  const inner = await page('/resources/');
+  assert.equal(inner.document.querySelector('.intro-screen'), null);
 });

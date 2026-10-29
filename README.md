@@ -11,6 +11,8 @@ Public website for New Walk 360 Inc. Static HTML, CSS, and browser JavaScript, p
 
 Pages: home, our mission, housing assistance, community resources, donations, contact, privacy/accessibility, and a custom 404.
 
+The homepage has a short purple-and-gold circle reveal on the first visit in a browser session. It skips reduced-motion users, never captures pointer input, and dismisses immediately on a click or keypress. CSS hides it after the animation even if JavaScript fails. The footer uses a larger presentation of the supplied logo with softly blended edges; the original image file is unchanged.
+
 ## Content and connection status
 
 - No housing application or contact form collects personal information.

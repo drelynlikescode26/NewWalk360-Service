@@ -1,4 +1,21 @@
 'use strict';
+
+// The homepage intro is decorative, short, and never blocks interaction.
+const introScreen = document.querySelector('.intro-screen');
+if (introScreen && document.documentElement.classList.contains('show-intro')) {
+  let introTimer;
+  const dismissIntro = () => {
+    document.documentElement.classList.remove('show-intro');
+    introScreen.remove();
+    window.clearTimeout(introTimer);
+    window.removeEventListener('pointerdown', dismissIntro, true);
+    window.removeEventListener('keydown', dismissIntro, true);
+  };
+  window.addEventListener('pointerdown', dismissIntro, {capture:true,once:true});
+  window.addEventListener('keydown', dismissIntro, {capture:true,once:true});
+  introTimer = window.setTimeout(dismissIntro, 1500);
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const primaryNav = document.querySelector('.primary-nav');
 function closeMenu() {
