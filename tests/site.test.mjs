@@ -7,7 +7,7 @@ import vm from 'node:vm';
 import { parseHTML } from 'linkedom';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const routes = ['/', '/about/', '/programs/', '/get-help/', '/get-involved/', '/housing-assistance/', '/resources/', '/donate/', '/contact/', '/privacy/', '/404.html'];
+const routes = ['/', '/about/', '/programs/', '/grant-consulting/', '/get-help/', '/get-involved/', '/housing-assistance/', '/resources/', '/donate/', '/contact/', '/privacy/', '/404.html'];
 const filename = path => resolve(root, path === '/' ? 'index.html' : path.replace(/^\//, '') + (path.endsWith('/') ? 'index.html' : ''));
 const source = await readFile(resolve(root, 'script.js'), 'utf8');
 async function page(route) {
