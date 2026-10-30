@@ -59,3 +59,14 @@
 @media(max-width:760px){.nav-inner{min-height:80px;gap:10px}.nav-inner .brand{gap:7px}.nav-inner .brand>img{width:32px;height:43px}.nav-inner .brand-type{font-size:12px}.nav-inner .brand-type small{display:none}.nav-actions{gap:6px}.nav-actions .button{font-size:10px;min-height:44px;padding:10px}.menu-toggle{width:34px;padding:7px}.menu-toggle>span:not(.sr-only){width:18px}.four-programs,.mission-vision{grid-template-columns:1fr;gap:28px}.program-jumps{gap:8px}.program-jumps .text-link{font-size:10px;padding:10px}.program-detail{scroll-margin-top:95px}.program-detail .split{gap:28px}.program-detail .feature-photo{order:0}.program-detail .section-copy{order:1}.program-detail h2{font-size:30px}.program-list li{font-size:13px}.program-detail .feature-photo>img{aspect-ratio:1.5}.mission-vision h2{font-size:30px}.mission-vision article>p:last-child{font-size:14px}.availability-panel{padding:22px}.availability-panel>div{align-items:flex-start;flex-direction:column;gap:9px}.availability-panel a{font-size:14px}.program-status{font-size:10px}.resource-card .resource-eligibility{font-size:12px}}
 @media(max-width:360px){.nav-inner{gap:7px}.nav-inner .brand-type{font-size:11px}.nav-inner .brand>img{width:27px;height:36px}.nav-actions .button{font-size:9px;padding:9px}.nav-actions{gap:5px}.menu-toggle{width:30px;padding:5px}}
 @keyframes intro-orbit-turn{to{transform:rotate(360deg)}}
+/* Freestanding transparent marks replace the rectangular artwork panels. */
+.site-header .nav-inner .brand{gap:0}
+.site-header .nav-inner .brand>img{display:block;width:128px;height:auto;aspect-ratio:3/2;object-fit:contain;border-radius:0}
+.footer-logo{width:190px;height:auto;aspect-ratio:3/2;margin:0;overflow:visible;border-radius:0;mask-image:none;mask-composite:add;background:none}
+.footer-logo>img{position:static;display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.intro-logo-frame{width:180px;height:120px;overflow:visible;mask-image:none;mask-composite:add}
+.intro-logo-frame>img{position:static;display:block;width:100%;height:auto;max-width:100%;object-fit:contain}
+.brand-story{background:none;padding:20px 0}
+.brand-story img{display:block;width:min(100%,380px);height:auto;max-height:none;border-radius:0}
+@media(max-width:760px){.site-header .nav-inner .brand>img{width:96px;height:auto}.footer-logo{width:170px;height:auto;margin:0}.footer-logo>img{width:100%;height:auto;top:auto}.brand-story{padding:10px 0}}
+@media(max-width:360px){.site-header .nav-inner .brand>img{width:86px;height:auto}}
