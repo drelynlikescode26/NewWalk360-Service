@@ -11,3 +11,15 @@ Use case: background-extraction. Asset type: transparent nonprofit website logo.
 ## Purple lettering variant prompt (built-in image_gen)
 
 Use case: precise-object-edit. Asset type: transparent nonprofit website logo for a white header. Input image 1 is the edit target: the existing extracted NEW WALK 360 INC logo. Preserve all exact typography, layout, gold 360 numerals, gold orbital arrows, smaller gold INC, spelling and proportions. Change ONLY the NEW WALK letters from white to deep purple #2e1649 so they read clearly on white. Remove any broad outer glow, hazy backdrop, and ambient shadow cloud; keep only crisp logo strokes and minimal close edge shading. True alpha transparency outside the letters and gold artwork, including all gaps and counters. No solid backdrop, no rectangular panel, no checkerboard pixels, no badge, no extra artwork. Tightly fitted landscape transparent canvas with small safe margin and no clipping. Preserve NEW WALK, 360, INC verbatim.
+
+## Purple INC update (built-in image_gen)
+
+The active website assets are now images/logo-transparent-purple-v2.png for light backgrounds and images/logo-transparent-light-v2.png for dark backgrounds. Only the INC lettering was requested to change. It is deep purple on light backgrounds and light purple on dark backgrounds for readability. Earlier logo files remain preserved.
+
+### Header edit prompt
+
+Use case: precise-object-edit. Asset type: existing transparent nonprofit logo for the white website header. Input image 1 is the edit target. Change ONLY the small INC lettering at the bottom from gold to deep brand purple #2e1649, matching the existing NEW WALK lettering. Preserve INC exactly, in the identical font, size, position, italic angle and spacing. Preserve EVERYTHING else: the exact NEW WALK text and its current color, gold 360 numerals, gold elliptical arrows, geometry, dimensions, canvas framing, transparency, and all other artwork. Maintain genuine alpha transparency outside the logo including all letter counters and empty regions. Do not add a background, panel, badge, glow, or other text. Do not change the 360 or NEW WALK colors. Only recolor the small INC lettering at the bottom to purple.
+
+### Footer edit prompt
+
+Use case: precise-object-edit. Asset type: existing transparent nonprofit logo for the dark purple website footer. Input image 1 is the edit target. Change ONLY the small INC lettering at the bottom from gold to light purple #be91ed so the small lettering remains legible on a dark purple website footer. Preserve INC exactly, in the identical font, size, position, italic angle and spacing. Preserve EVERYTHING else: the exact NEW WALK text and its current color, gold 360 numerals, gold elliptical arrows, geometry, dimensions, canvas framing, transparency, and all other artwork. Maintain genuine alpha transparency outside the logo including all letter counters and empty regions. Do not add a background, panel, badge, glow, or other text. Do not change the 360 or NEW WALK colors. Only recolor the small INC lettering at the bottom to purple.
