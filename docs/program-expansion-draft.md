@@ -21,6 +21,8 @@ Prepared October 29, 2026. The owner approved the site's presentation, reported 
 
 The user said to keep all four programs and will ask the organization which are operating. All four therefore remain in the draft with availability unconfirmed. They are not described as open applications.
 
+The owner subsequently confirmed the housing focus includes veterans, adults with disabilities, families, and seniors, with inquiries welcome from all ages and genders. Temporary and transitional housing were explicitly requested. The housing page now explains the audience, housing models, proposed support, and details to confirm; see [housing content notes](housing-content-notes.md). This audience clarification does not confirm that homes or assistance programs are currently operating.
+
 The user will obtain the organization's public email, phone, service counties, and office hours. No contact information is invented.
 
 The user does not believe a donation processor or secure intake system is established and expects to arrange those. No card collection, pledge submission, assistance application, referral submission, volunteer registration, or newsletter subscription is simulated.

@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import {applyProgramUpdate} from './content/program-update.mjs';
 import {applyGrantConsulting} from './content/grant-consulting.mjs';
+import {applyHousingDetails} from './content/housing-details.mjs';
 
 const config = JSON.parse(await readFile(new URL('./site.config.json', import.meta.url), 'utf8'));
 for (const field of ['donationUrl','intakeUrl','referralUrl','volunteerUrl']) {
@@ -104,11 +105,12 @@ pages.push({path:'/404.html',title:'Page not found',description:'Find your way b
 
 applyProgramUpdate({pages, config, esc, icon, image, link, external, breadcrumb, pageHeading, cta, crisis});
 applyGrantConsulting({pages, config, esc, icon, image, link, breadcrumb, pageHeading});
+applyHousingDetails({pages, config, icon, link});
 const reviewBanner = config.draft ? '<aside class="draft-banner"><strong>Review Draft</strong><span>Program availability, contact details, donations, and intake connections need organization confirmation.</span></aside>' : '';
 for (const page of pages) {
  const fullTitle = `${page.title} | ${config.name}`;
  const canonical = `${config.url}${page.path}`;
- const html = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#2e1649"><meta name="description" content="${esc(page.description)}"><title>${esc(fullTitle)}</title><link rel="canonical" href="${canonical}">${page.noindex||config.draft?'<meta name="robots" content="noindex, nofollow">':''}${page.path==='/'?introStartup:''}<meta property="og:type" content="website"><meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${config.url}/images/family-moment.webp"><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/png" href="/images/logo-transparent-purple.png"><link rel="stylesheet" href="/styles.css?v=newwalk-brand-2"><script>document.documentElement.classList.add('js');</script><script src="/script.js?v=newwalk-release-1" defer></script></head><body>${page.path==='/'?intro:''}${reviewBanner}${header(page.path)}<main id="main">${page.body}</main>${footer.replace('New Walk 360 Inc.',esc(config.name)+'.').replace('/contact/#get-involved','/get-involved/')}</body></html>\n`;
+ const html = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#2e1649"><meta name="description" content="${esc(page.description)}"><title>${esc(fullTitle)}</title><link rel="canonical" href="${canonical}">${page.noindex||config.draft?'<meta name="robots" content="noindex, nofollow">':''}${page.path==='/'?introStartup:''}<meta property="og:type" content="website"><meta property="og:title" content="${esc(fullTitle)}"><meta property="og:description" content="${esc(page.description)}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${config.url}/images/family-moment.webp"><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/png" href="/images/logo-transparent-purple.png"><link rel="stylesheet" href="/styles.css?v=newwalk-housing-3"><script>document.documentElement.classList.add('js');</script><script src="/script.js?v=newwalk-release-1" defer></script></head><body>${page.path==='/'?intro:''}${reviewBanner}${header(page.path)}<main id="main">${page.body}</main>${footer.replace('New Walk 360 Inc.',esc(config.name)+'.').replace('/contact/#get-involved','/get-involved/')}</body></html>\n`;
  const file = page.path === '/' ? 'index.html' : page.path.endsWith('/') ? `${page.path.slice(1)}index.html` : page.path.slice(1);
  await mkdir(new URL(file.substring(0,file.lastIndexOf('/')+1),root),{recursive:true});
  await writeFile(new URL(file,root),html);
