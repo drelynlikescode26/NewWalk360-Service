@@ -57,8 +57,11 @@ export function applyProgramUpdate({pages, config, esc, icon, image, link, exter
   donate.description='Explore one-time and monthly giving, donated items, volunteering, and sponsorship for New Walk 360 Resources Inc.';
   donate.body=donate.body.replace('Open the door<br>to <em>what’s next.</em>','Give Hope.<br>Create Stability.<br><em>Change Lives.</em>')
     .replace('A stable home. Everyday essentials. Someone in your corner. Help build a community where a fresh start feels possible.','Help support housing, food, clothing, and essential assistance for individuals and families working toward stability.')
-    .replace('Give a fresh start.</h2>','Your Gift Makes A Difference</h2>')
-    .replace('Your generosity can help move the mission forward.','Gifts support general program needs. Specific services and funding depend on current operations.')
+    .replace('Give a fresh start.</h2>','Help More Families<br><em>Find A Fresh Start.</em></h2>')
+    .replace('Your generosity can help move the mission forward.','No one should have to face a housing crisis alone. Your generosity can help New Walk 360 reach more families and individuals with housing support, everyday essentials, and a helping hand toward stability.')
+    .replace('Continue to secure giving','Give Hope To More Families')
+    .replace('Explore other ways to help','Help Families In Need')
+    .replace('Please confirm receipt and tax information with the organization before giving.','Gifts support general program needs; services depend on current operations and available funding. Please confirm receipt and tax information with the organization before giving.')
     .replaceAll('/contact/#get-involved','/get-involved/');
   donate.body=donate.body.replace('<section class="section soft-section">',`<section class="section soft-section" id="donate-items"><div class="container narrow"><p class="eyebrow">DONATE ITEMS</p><h2>Everyday Essentials.<br><em>Practical Support.</em></h2><p>Suggested items for the team to confirm include food, gently used clothing, hygiene supplies, and household essentials. Check approved needs and arrange a drop-off before bringing donations.</p><ul class="program-list"><li>${icon('check')}Food pantry items</li><li>${icon('check')}Clean, gently used clothing</li><li>${icon('check')}Unopened hygiene supplies</li><li>${icon('check')}Approved household essentials</li></ul><p>An Amazon or Walmart wish list will be linked once the organization establishes one.</p>${contactAction('Ask About Donating Items')}</div></section><section class="section soft-section">`);
 
