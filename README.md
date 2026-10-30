@@ -13,9 +13,9 @@ Public website for New Walk 360 Inc. Static HTML, CSS, and browser JavaScript, p
 
 The program expansion is maintained in `content/program-update.mjs`; the thirteen resource listings and categories are in `content/resource-directory.mjs`. `site.config.json` holds program status, draft mode, and approved connection URLs. Each program must have a valid explicit availability label. The building videos belong to the owner's father's 1 Good Deal website and were removed from this nonprofit site at the owner's request.
 
-Pages: home, About Us, Programs & Services, Get Help, Resource Center, Get Involved, Donate, Contact, the preserved housing assistance page, privacy/accessibility, and a custom 404. Eleven automated tests cover structure/routes, resource search and filters, housing selections, giving controls, navigation, intro behavior, program availability, visible help/donate actions, honest unconnected features, and removal of the construction videos. The owner reported the site looks good on mobile. An agent-rendered visual check remains unavailable because browser use is disabled.
+Pages: home, About Us, Programs & Services, Get Help, Resource Center, Get Involved, Donate, Contact, the preserved housing assistance page, privacy/accessibility, and a custom 404. Eleven automated tests cover structure/routes, resource search and filters, housing selections, giving controls, navigation, intro behavior, program availability, visible help/donate actions, honest unconnected features, and removal of the construction videos. The owner reported the site looks good on mobile. The transparent logo update was visually checked in the in-app browser at desktop width and a 390px mobile viewport.
 
-The homepage has a short purple-and-gold circle reveal on the first visit in a browser session. It skips reduced-motion users, never captures pointer input, and dismisses immediately on a click or keypress. CSS hides it after the animation even if JavaScript fails. The footer uses a larger presentation of the supplied logo with softly blended edges; the original image file is unchanged.
+The homepage has a short purple-and-gold circle reveal on the first visit in a browser session. It skips reduced-motion users, never captures pointer input, and dismisses immediately on a click or keypress. CSS hides it after the animation even if JavaScript fails. The header, footer, About page, and intro use freestanding transparent logo adaptations with no rectangular background. Purple lettering is used on light backgrounds and white lettering on dark backgrounds; the original image file is unchanged.
 
 ## Content and connection status
 
@@ -27,6 +27,6 @@ The homepage has a short purple-and-gold circle reveal on the first visit in a b
 
 ## Assets and provenance
 
-The supplied logo is used intact in `images/logo.jpg`. The current website uses four licensed camera photographs from Pexels, inspected before selection and optimized into WebP files. The original generated photographs were replaced at the user’s request. Photo credits are provided on the privacy page.
+The original supplied logo is preserved in `images/logo.jpg`. Background-free website adaptations and their editing prompts are documented in [logo asset notes](docs/logo-assets.md). The current website uses four licensed camera photographs from Pexels, inspected before selection and optimized into WebP files. The original generated photographs were replaced at the user’s request. Photo credits are provided on the privacy page.
 
 See [photo credits](docs/photo-credits.md) for the current assets and licenses, [archived image prompts](docs/image-prompts.md) for the original unused generation briefs, and [research notes](docs/research.md) for design references and resource sources. Manrope is self-hosted under the SIL Open Font License in `fonts/OFL.txt`.
